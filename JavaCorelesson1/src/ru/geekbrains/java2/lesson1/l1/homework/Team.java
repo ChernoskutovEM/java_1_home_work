@@ -22,26 +22,46 @@ public class Team implements Competitor{
 
     @Override
     public void run(int distance) {
-
+        if (distance <= maxRunDistance){
+            System.out.println(type + " " + name + " успешно справился с кроссом");
+        } else {
+            System.out.println(type + " " + name + " не смог преодолеть кросс");
+            onDistance = false;
+        }
     }
 
     @Override
     public void swim(int distance) {
-
+        if (maxSwimDistance == 0){
+            System.out.println(type + " " + name + " не умеет плавать");
+            onDistance = false;
+            return;
+        }
+        if (distance <= maxSwimDistance){
+            System.out.println(type + " " + name + " успешно проплыл дистанцию");
+        } else {
+            System.out.println(type + " " + name + " не смог проплыть дистанцию");
+            onDistance = false;
+        }
     }
 
     @Override
     public void jump(int height) {
-
+        if (height <= maxJumpHeight){
+            System.out.println(type + " " + name + " успешно перепрыгнул препятствие");
+        } else {
+            System.out.println(type + " " + name + " не смог перепрыгнуть препятствие");
+            onDistance = false;
+        }
     }
 
     @Override
     public boolean isOnDistance() {
-        return false;
+        return onDistance;
     }
 
     @Override
-    public void showResult() {
-
+    public void showResult(){
+        System.out.println(name + ": " + onDistance);
     }
 }
